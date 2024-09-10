@@ -1,14 +1,15 @@
 <script>
-
-export let user;
-
-export let i;
-
-function remove() {
-
-    alert('removing');
+	import { createEventDispatcher } from "svelte";
     
-}
+    const dispatch=createEventDispatcher();
+    export let user;
+    export let i;
+
+    function remove() {
+
+        dispatch('remove', user.id);
+        
+    }
 
 </script>
 

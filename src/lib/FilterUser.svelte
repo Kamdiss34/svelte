@@ -4,7 +4,7 @@
     
      //export let filter;
      const dispatch = createEventDispatcher();
-
+     
     function filter (e) {
         //dispatch an event
          dispatch('filter',e.target.value);
