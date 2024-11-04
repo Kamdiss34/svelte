@@ -37,7 +37,7 @@ text-white rounded cursor-pointer'> New User</button>
 {#if showModal}  
   
 <Modal on:close={ () => (showModal = false)}
-     show={showModal}
+    
     on:submit={handleForm}>
 <h5 class='text-2xl text-center'>Create New User</h5> 
 

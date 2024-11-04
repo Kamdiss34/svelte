@@ -1,9 +1,11 @@
 
 <script>
-     export let show;
-	import { createEventDispatcher } from 'svelte';
+    // export let show;
+	import { createEventDispatcher, onMount, onDestroy} from 'svelte';
      const dispatch = createEventDispatcher();
 
+ 
+  
 function close() 
 {
      dispatch("close");
@@ -24,7 +26,7 @@ function onSubmit()
 class='relative z-10'
 aria-labelledby='modal-title'
 role="dialog"
-style:display={show ? "block" : "none"}
+
 aria-modal='true' >
 <!-- on:click={close} ceci est enlever dans le div -->
 
