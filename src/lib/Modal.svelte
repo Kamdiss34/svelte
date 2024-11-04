@@ -1,11 +1,18 @@
 
 <script>
+     export let show;
 	import { createEventDispatcher } from 'svelte';
- const dispatch = createEventDispatcher();
+     const dispatch = createEventDispatcher();
 
 function close() 
 {
-     dispatch('close');
+     dispatch("close");
+    
+}
+
+function onSubmit() 
+{
+     dispatch("onSubmit");
     
 }
 
@@ -16,10 +23,10 @@ function close()
 <div
 class='relative z-10'
 aria-labelledby='modal-title'
-role='dialog'
-aria-modal='true'
-on:click={close}
->
+role="dialog"
+style:display={show ? "block" : "none"}
+aria-modal='true' >
+<!-- on:click={close} ceci est enlever dans le div -->
 
 <div class='fixed inset-0 bg-gray-500 bg-opacity-75
 transition-opacity' />
@@ -44,16 +51,24 @@ transform transition-all sm:my-8 sm:max-w-sm
 sm:w-full sm:p-6'
 >
 
-<div class='mt-5 sm:mt-6'>
+<form class='mt-5 sm:mt-6' on:submit preventDefault={onSubmit}>
     
     
-<button class='px-2 py-2 bg-white border
+<slot/>
+<div class='flex justify-between'>
+
+<button 
+type="button"   
+class='px-2 py-2 bg-white border
 rounded hover:bg-gray-200'
 on:click={close}> Close </button>
 
+<slot name='right-button'/>  
+</div>  
+          
+</form>  
 </div>
-</div>
-</div>
+</div>  
 </div>
 </div>
 

@@ -1,5 +1,6 @@
 <script>
-	import NewUser from './NewUser.svelte';
+
+import NewUser from './NewUser.svelte';
 	import FilterUser from './FilterUser.svelte';
 	import User from './User.svelte';
   import user1 from "../assets/images/user1.png";
@@ -43,17 +44,31 @@ function filter ({detail}) {
  function remove({detail}) {
   users = users.filter((user) => user.id !== detail);
 
-  
+ }
+
+ const add = ({ detail }) =>{
+     users= [
+      {
+      id: users.length + 1,
+      image: user1,
+      ...detail,
+    }]
+    
  }
 
 </script>
+	
+
+
+
 <div class="flex flex-col m-5 bg-white border p-4 rounded-lg shadow-md hover:shadow-lg cursor-pointer">
   <h1 class='text-4xl text-center mt-10 mb-6'>List of Users</h1>
   
   
 <div class='flex justify-between mx-4 items-center'>
   <FilterUser on:filter={filter} />
-  <NewUser />
+  
+  <NewUser on:newUser={add} />
 </div>
   {#each filteredUsers as user, i (user.id) }
 
