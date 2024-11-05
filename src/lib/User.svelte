@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher } from "svelte";
+    import { slide } from "svelte/transition";
     
     const dispatch=createEventDispatcher();
     export let user;
@@ -13,7 +14,9 @@
 
 </script>
 
-<div class="flex items-center 
+<div 
+transition:slide
+class="flex items-center 
 justify-between mb-4 relative">
     <span 
     on:click={remove}

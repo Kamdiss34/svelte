@@ -8,6 +8,7 @@ import NewUser from './NewUser.svelte';
     import { tweened } from 'svelte/motion';
     import { cubicIn } from 'svelte/easing';
   import { onMount } from 'svelte';
+  import { slide } from 'svelte/transition';
     //$: progress = filteredUsers.length;
      const progress = tweened(0,{
         duration: 1000,
@@ -39,7 +40,9 @@ function filter ({detail}) {
 
 
 
-<div class="flex flex-col m-5 bg-white border p-4 rounded-lg shadow-md hover:shadow-lg cursor-pointer">
+<div 
+transition:slide
+class="flex flex-col m-5 bg-white border p-4 rounded-lg shadow-md hover:shadow-lg cursor-pointer">
   <h1 class='text-4xl text-center mt-10 mb-6'>List of Users</h1>
  
   <div class='flex justify-between mx-4 items-center'>
